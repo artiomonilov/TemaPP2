@@ -40,6 +40,14 @@ def checksum_polynomial(text):
         checksum += ord(ch) * ((i+1) ** 5)
     return checksum
 
+def sumaEx1(word):
+    checksum = 0
+    word = word[1:-1] if len(word) > 2 else word  # eliminăm primul și ultimul dacă sunt mai multe caractere
+    for i, ch in enumerate(word):
+        checksum += ord(ch) * ((i + 1) ** 5)
+    return checksum
+
+
 if __name__ == '__main__':
     checker = PrimeChecker()
     primes = []
@@ -47,10 +55,27 @@ if __name__ == '__main__':
     for _ in range(5000):
         primes.append(checker.next_item())
 
-    text = ''.join(str(p) for p in primes)
-    text = text[1:-1]
+    #aplicatii
+    # text = ''.join(str(p) for p in primes)
+    # text = text[1:-1]
+    #
+    # result = checksum_polynomial(text)
 
-    result = checksum_polynomial(text)
+    #ex1
+    primes_str = [str(p) for p in primes]
+
+    #dictionar de grupe cu csum si numere
+    groups = {}
+    for num_str in primes_str:
+        csum = sumaEx1(num_str)
+        if csum not in groups:
+            groups[csum] = []
+        groups[csum].append(num_str)
+
+
+    for csum, nums in groups.items():
+        if len(nums) > 1:
+            print(f"Numere cu aceeași sumă de control {csum}: {nums}")
 
     print(f'Computed 111{len(primes)} prime numbers')
     print(f'The last 5 are: {primes[-5:]}')

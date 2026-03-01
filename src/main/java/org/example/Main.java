@@ -38,27 +38,27 @@ public class Main {
 
 
 
-        try(Context context = Context.newBuilder().allowAllAccess(true).build())
-        {
-            Value pyBindings = context.getBindings("python");
-            context.eval(Source.newBuilder("python", pyCode, "random.py").build());
-            Value lista = pyBindings.getMember("lista");
+//        try(Context context = Context.newBuilder().allowAllAccess(true).build())
+//        {
+//            Value pyBindings = context.getBindings("python");
+//            context.eval(Source.newBuilder("python", pyCode, "random.py").build());
+//            Value lista = pyBindings.getMember("lista");
+//
+//            context.getBindings("js").putMember("lista", lista);
+//            context.eval("js", jsCode);
+//
+//
+//            context.getBindings("python").putMember("lista", lista);
+//            String sortPy = Files.readString(Path.of("src/main/java/org/example/sortList.py"));
+//            context.eval("python", sortPy);
+//
+//        }
 
-            context.getBindings("js").putMember("lista", lista);
-            context.eval("js", jsCode);
 
-
-            context.getBindings("python").putMember("lista", lista);
-            String sortPy = Files.readString(Path.of("src/main/java/org/example/sortList.py"));
-            context.eval("python", sortPy);
-
+        try(Context context = Context.newBuilder().allowAllAccess(true).build()) {
+            context.eval(Source.newBuilder("python", Files.readString(Path.of("src/main/java/org/example/primes.py")), "primes.py").build());
+            
         }
-
-
-
-
-
-
 
 
 
