@@ -55,9 +55,23 @@ public class Main {
 //        }
 
 
-        try(Context context = Context.newBuilder().allowAllAccess(true).build()) {
-            context.eval(Source.newBuilder("python", Files.readString(Path.of("src/main/java/org/example/primes.py")), "primes.py").build());
-            
+//        try(Context context = Context.newBuilder().allowAllAccess(true).build()) {
+//            context.eval(Source.newBuilder("python", Files.readString(Path.of("src/main/java/org/example/primes.py")), "primes.py").build());
+//
+//        }
+
+        try (Context context = Context.newBuilder()
+                .allowAllAccess(true)
+                .build()) {
+
+            context.eval(
+                    Source.newBuilder(
+                            "python",
+                            Files.readString(
+                                    Path.of("src/main/java/org/example/Ex2.py")),
+                            "Ex2.py"
+                    ).build()
+            );
         }
 
 
