@@ -1,3 +1,5 @@
+print("Entering python")
+
 class AcceptFilter:
     def accept(self, n):
         return True
@@ -37,5 +39,5 @@ if __name__ == '__main__':
     primes = []
     for _ in range(5000):
         primes.append(checker.next_item())
-    print(f'Computed {len(primes)} prime numbers')
+    print(f'Computed 111{len(primes)} prime numbers')
     print(f'The last 5 are: {primes[-5:]}')

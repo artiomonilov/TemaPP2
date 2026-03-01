@@ -11,10 +11,19 @@ public class Main {
         Path jsPath = Path.of("src/main/java/org/example/primes.js");
         String jsCode = Files.readString(jsPath);
 
-        System.out.println("Asteptam executarea codului JavaScript");
-        try (Context context = Context.newBuilder("js").allowAllAccess(true).build()) {
-            context.eval(Source.newBuilder("js", jsCode, "primes.js").build());
+        Path pyPath = Path.of("src/main/java/org/example/primes.py");
+        String pyCode = Files.readString(pyPath);
+
+//        System.out.println("Asteptam executarea codului JavaScript");
+//        try (Context context = Context.newBuilder("js").allowAllAccess(true).build()) {
+//            context.eval(Source.newBuilder("js", jsCode, "primes.js").build());
+//        }
+
+        System.out.println("Asteptam executarea codului Python... ");
+        try(Context context = Context.newBuilder("python").allowAllAccess(true).build() ) {
+            context.eval(Source.newBuilder("python", pyCode, "primes.py").build());
         }
+
 //        try (Context context = Context.newBuilder().allowAllAccess(true).build()) {
 //
 //
