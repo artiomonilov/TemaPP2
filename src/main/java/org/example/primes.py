@@ -34,10 +34,24 @@ class PrimeChecker:
         return self.number
 
 
+def checksum_polynomial(text):
+    checksum = 0
+    for i, ch in enumerate(text):
+        checksum += ord(ch) * ((i+1) ** 5)
+    return checksum
+
 if __name__ == '__main__':
     checker = PrimeChecker()
     primes = []
+
     for _ in range(5000):
         primes.append(checker.next_item())
+
+    text = ''.join(str(p) for p in primes)
+    text = text[1:-1]
+
+    result = checksum_polynomial(text)
+
     print(f'Computed 111{len(primes)} prime numbers')
     print(f'The last 5 are: {primes[-5:]}')
+    print(f'The polinomial sum: {result}')
