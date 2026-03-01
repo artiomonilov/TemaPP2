@@ -48,6 +48,10 @@ public class Main {
             context.eval("js", jsCode);
 
 
+            context.getBindings("python").putMember("lista", lista);
+            String sortPy = Files.readString(Path.of("src/main/java/org/example/sortList.py"));
+            context.eval("python", sortPy);
+
         }
 
 
